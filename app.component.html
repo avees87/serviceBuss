@@ -1,0 +1,33 @@
+<ng-container *ngIf="isLoggedIn">
+<sbx-header (navbarEventEmitter)="sidenav.toggle()"></sbx-header>
+
+<mat-sidenav-container class="sbx-container" autosize>
+  <mat-sidenav #sidenav class="sbx-sidenav" mode="side" opened="true" *ngIf="!hideUI">
+    <sbx-side-nav></sbx-side-nav>
+  </mat-sidenav>
+
+  <mat-card>
+    <mat-card-content>
+      <div class="topnav"  *ngIf="!hideUI">
+        <div class="search-container">
+          <form [formGroup]="searchForm">
+            <mat-form-field class="fullwidth">
+              <input matInput placeholder="Search: type, hit enter" id="firstname" [(ngModel)]="searchText"
+                formControlName="searchText">
+            </mat-form-field>
+            <button mat-icon-button type="submit" (click)="getSearchTextInfo()">
+              <mat-icon>search</mat-icon>
+            </button>
+          </form>
+        </div>
+      </div>
+      <router-outlet *ngIf="!isIframe"></router-outlet>
+    </mat-card-content>
+  </mat-card>
+
+  <footer class="footer-cnt" >
+    SBX Build ©{{appYear}} Version: {{appversion}}.
+    <span class={{EnvColor}}> Environment : {{environmentName}} </span>
+  </footer>
+</mat-sidenav-container>
+</ng-container>

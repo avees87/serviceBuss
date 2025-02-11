@@ -1,0 +1,78 @@
+.sbx-card {
+  max-width: 400px;
+}
+
+.logo-cnt {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+
+  img {
+    filter: brightness(100);
+  }
+}
+
+.sbx-container {
+  height: calc(100vh - 64px);
+  border-bottom: none;
+}
+
+.sbx-sidenav-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  margin: 20px;
+  border: solid 1px #eee;
+  padding: 20px;
+  background: #eee;
+  border-radius: 7px;
+}
+
+.topnav{
+    margin-bottom: -70px;
+    z-index: 9;
+    display: flex;
+    justify-content: flex-end;
+  .search-container{
+    display: flex;
+    justify-content: flex-end;
+    form{display: flex;}
+    mat-form-feild{
+      min-height: auto;
+      .mat-mdc-form-field-infix{
+        min-height: auto;
+        padding: 0;
+      }
+      #firstname{
+        border: solid 1px #eee;
+      }
+    }
+  }
+}
+
+footer.footer-cnt{
+  padding: 10px 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+::ng-deep .dark-theme{
+  footer.footer-cnt{
+    color: #fff;
+    span{
+      color: #fff;
+    }
+  }
+}
+
+.divLocalDevEnvColor {
+  color: #26a6dd;
+}
+.divUATEnvColor {
+  color:#26a6dd;
+}
+.divPRODEnvColor {
+  color: rgb(0, 117, 17);
+}
