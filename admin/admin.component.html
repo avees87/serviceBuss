@@ -1,0 +1,256 @@
+<div class="loading-cnt" *ngIf="isLoading">
+    <div class="loader"></div>
+</div>
+<div class="admin-cnt">
+    <div class="left-cnt">
+        <h2 class="heading">SBX Admin</h2>
+        <h2 class="heading">Find Users</h2>
+        <form class="admin-form" [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+            <label for="username">Email Id:</label>
+            <div class="form-cnt">
+                <input type="text" id="username" placeholder="john smith" formControlName="username" required />
+                <button type="submit" class="btn btn-primary btnSubmit" [disabled]="!adminForm.valid">Search</button>
+            </div>
+            <small *ngIf="adminForm.get('username')?.invalid && adminForm.get('username')?.touched">* Email is required.</small>
+        </form>
+        <div class="userlist" *ngIf="data.length > 0">
+            <h5>
+                <strong>User Name Found</strong>
+            </h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Fullname</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data; index as i" (click)="showUserProfile(i)" >
+                        <td>{{ item.displayName}}</td>
+                        <td>{{ item.givenName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ng-template *ngIf="data.length < 1">
+            <h5 class="alert-danger-bg">No user Found </h5>
+        </ng-template>
+
+    </div>
+    <div class="right-cnt" *ngIf="showEditProfile">
+        <mat-tab-group color="accent">
+            <mat-tab label="Edit User">
+              <mat-card class="tab-cnt">
+                <mat-card-content class="card-content">
+                  <form [formGroup]="currentUserForm" (submit)="addUser()" class="currentUserForm">
+                    <div class="formCnt">
+                        <div class="colmn">
+                            <div class="form-group">
+                                <label for="username">User Name :</label>
+                                <!-- <input type="text" id="username" class="form-control" formControlName="userName" readonly /> -->
+                                <input type="text" id="username" name="username" formControlName="userName" class="form-control" required />
+                                <small class="errorMsg" *ngIf="currentUserForm.get('userName')?.invalid && currentUserForm.get('userName')?.touched">* User Name is required.</small>
+                                <small class="errorMsg" *ngIf="currentUserForm.get('userName')?.errors">* User Name is required.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="">User ID:</label>
+                                <input type="text" id="userId" class="form-control" formControlName="userID" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName">First Name :</label>
+                                <input type="text" id="firstName" class="form-control" formControlName="firstName" readonly />
+                          </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name :</label>
+                                <input type="text" id="lastName" class="form-control" formControlName="lastName" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email :</label>
+                                <input type="email" id="email" formControlName="email" class="form-control" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label for="role">Role :</label>
+                                <select name="roleID" formControlName="roleID" id="roleID" class="form-control" required >
+                                    <option value="">select</option>
+                                    <ng-container *ngFor="let filterRole of userRoleNGroup.filteredRoles; index as i">
+                                        <option [value]="filterRole.roleId">{{filterRole.roleName}}</option>
+                                    </ng-container>
+                                </select>
+                                <small class="errorMsg" *ngIf="currentUserForm.get('roleID')?.invalid && currentUserForm.get('roleID')?.touched">* Role is required.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="clientGroup">Client Group :</label>
+                                <select name="clientGroupID" id="clientGroupID" formControlName="clientGroupID" class="form-control" required >
+                                    <option value="">select</option>
+                                    <ng-container *ngFor="let client of userRoleNGroup.clientGroups; index as i">
+                                        <option [value]="client.id">{{client.name}}</option>
+                                    </ng-container>
+                                </select>
+                                <small class="errorMsg" *ngIf="currentUserForm.get('clientGroupID')?.invalid && currentUserForm.get('clientGroupID')?.touched">* Client Group is required.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="createdDate">Created Date :</label>
+                                <input type="text" id="createdDate" hidden class="form-control" aria-disabled="true" formControlName="createdDate" />
+                                <span class="form-control">{{ currentUserForm.value.createdDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="createdBy">Created By :</label>
+                                <input type="text" id="createdBy" hidden formControlName="createdBy" class="form-control" aria-disabled="true" />
+                                <span class="form-control">{{ currentUserForm.value.createdBy }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastUpdatedDate">Modified Date :</label>
+                                <input type="text" id="lastUpdatedDate" hidden formControlName="modifiedDate" class="form-control" aria-disabled="true" name="modifiedDate"/>
+                                <span class="form-control">{{ currentUserForm.value.modifiedDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="modifiedBy">Last Updated By :</label>
+                                <input type="text" id="modifiedBy" name="modifiedBy" hidden formControlName="modifiedBy" class="form-control" aria-disabled="true"/>
+                                <span class="form-control">{{ currentUserForm.value.modifiedBy }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="userEmailAddress">Client Email Address :</label>
+                                <input type="text" id="userEmailAddress" name="userEmailAddress" formControlName="userEmailAddress" class="form-control" [required]="currentUserForm.controls['isInvestor'].value" />
+                                <small class="errorMsg" *ngIf="currentUserForm.get('userEmailAddress')?.invalid && currentUserForm.get('userEmailAddress')?.touched">* Client Email is required.</small>
+                                <small class="errorMsg" *ngIf="currentUserForm.get('userEmailAddress')?.errors">* Client Email is required.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="isInvestor">Is Investor?</label>
+                                <input type="checkbox" id="isInvestor" formControlName="isInvestor" name="isInvestor" />
+                                <!-- <input type="checkbox" id="isInvestor" formControlName="isInvestor" name="isInvestor" (change)="isInvestorChecked($event)" /> -->
+                            </div>
+                            <div class="form-group">
+                                <label for="isActive">Is Active ?</label>
+                                <input type="checkbox" id="isActive" formControlName="isActive" name="isActive" />
+                            </div>
+                            <div class="form-group" *ngIf="!currentUser.userID">
+                                <label for="isClone">Clone User</label>
+                                <input type="checkbox" id="isClone" [checked]="isCloneChecked" (change)="toggleCloneWrapper($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-cnt">
+                        <button [hidden]="currentUser.userID" class="btn btn-add" type="submit" [disabled]="!currentUserForm.valid">Add User</button>
+                        <a [hidden]="!currentUser.userID" (click)="updateCurrentUserFormSubmit(currentUserForm)" class="{{!currentUserForm.valid ? 'disable' : '' }}" class="btn btn-update">Update User</a>
+                        <a [hidden]="!currentUser.userID" (click)="deleteUser(currentUser.userID)" class="btn btn-delete">Delete User</a>
+                    </div>
+                  </form>
+                </mat-card-content>
+              </mat-card>
+
+              <mat-card class="bglightblue status-cnt" [hidden]="true">
+                  <mat-card-content>
+                      <div class="nodata-cnt">
+                          <div class="alert alert-success-bg"><mat-icon>info</mat-icon> {{cloneStatus}} <strong>Success!</strong> Indicates a successful or positive action.</div>
+                      </div>
+                      <div class="nodata-cnt">
+                          <div class="alert alert-warning-bg"><mat-icon>info</mat-icon> {{cloneStatus}} <strong>Warning!</strong> Indicates a warning that might need attention.</div>
+                      </div>
+                  </mat-card-content>
+              </mat-card>
+
+              <mat-card *ngIf="isCloneChecked" class="cloneWrapper">
+                <mat-card-content class="cloneWrapper-inner">
+                    <div class="clone-form">
+                        <form class="admin-form" [formGroup]="cloneForm" (ngSubmit)="fetchCloneUser()" [ariaReadOnly]="!currentUserForm.get('userEmailAddress')?.valid">
+                            <label for="cloneUser">
+                                <strong>Clone From:</strong>
+                            </label>
+                            <div class="form-cnt">
+                                <input id="cloneUser" type="text" value="" placeholder="john smith" formControlName="cloneUser" [readOnly]="!currentUserForm.get('userEmailAddress')?.valid" (blur)="setErrorClientEmail()" />
+                                <button type="submit" class="btn btn-primary btnSubmit" [disabled]="!cloneForm.valid">Search</button>
+                            </div>
+                            <small *ngIf="cloneForm.get('cloneUser')?.invalid && cloneForm.get('cloneUser')?.touched">* Email is Required.</small>
+                        </form>
+                        <div class="clone-section">
+                            <div class="userlist" *ngIf="currentCloneUser">
+                                <h5>Clone User</h5>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Fullname</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr (click)="showCloneUserDetails(currentCloneUser)">
+                                            <td>{{ currentCloneUser.fullName2 }}</td>
+                                            <td>{{ currentCloneUser.userName }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clone-right-cnt" *ngIf="showCloneUser">
+                        <div class="colmn">
+                            <h1 class="heading">User Details</h1>
+                            <ul>
+                                <li>
+                                    <span class="label">UserName: </span>
+                                    <span class="value">{{ currentCloneUser.userName }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">User ID: </span>
+                                    <span class="value">{{ currentCloneUser.userID }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">First Name: </span>
+                                    <span class="value">{{ currentCloneUser.firstName }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">Last Name: </span>
+                                    <span class="value">{{ currentCloneUser.lastName }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">Email: </span>
+                                    <span class="value">{{ currentCloneUser.email }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">Role ID: </span>
+                                    <span class="value">{{ currentCloneUser.role}} </span>
+                                </li>
+                                <li>
+                                    <span class="label">ClientGroup ID: </span>
+                                    <span class="value">{{ currentCloneUser.group}} </span>
+                                </li>
+                                <li>
+                                    <span class="label">Investor: </span>
+                                    <span class="value">
+                                        {{ currentCloneUser.isInvestor }}
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="label">Active: </span>
+                                    <span class="value">{{ currentCloneUser.isActive }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">Created Date: </span>
+                                    <span class="value">{{ currentCloneUser.createdDate | date:'yyyy-MM-dd HH:mm:ss' }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">Created By: </span>
+                                    <span class="value">{{ currentCloneUser.createdBy }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">Modified Date: </span>
+                                    <span class="value">{{ currentCloneUser.modifiedDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                                </li>
+                                <li>
+                                    <span class="label">Modified By: </span>
+                                    <span class="value">{{ currentCloneUser.modifiedBy }}</span>
+                                </li>
+                                <li>
+                                    <span class="label">Audit State: </span>
+                                    <span class="value">{{ currentCloneUser.auditState != null ?  currentCloneUser.auditState : null }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="submit" class="btn btn-primary btnSubmit" (click)="sendCloneData()" [disabled]="!currentUserForm.get('userEmailAddress')?.valid" >Submit</button>
+                    </div>
+                </mat-card-content>
+              </mat-card>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

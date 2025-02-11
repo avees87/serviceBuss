@@ -1,0 +1,266 @@
+<div class="wrapper fcNbkLoss">
+    <div class="tab-container one">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="6">
+                        <ng-container [ngSwitch]="fCBKLossMitDisplay.foreclosureStatus">
+                            <div *ngSwitchCase="'ACTIVE'">This loan is Active in Foreclosure</div>
+                            <div *ngSwitchCase="'REINSTATED'">This loan has been Removed from Foreclosure</div>
+                            <div *ngSwitchCase="'SUSPENDED'">This loan has been Suspended in Foreclosure</div>
+                            <div *ngSwitchCase="'COMPLETE'">This loan has been Closed in Foreclosure</div>
+                            <div *ngSwitchCase="'REMOVED'">This loan has been Removed in Foreclosure</div>
+                            <div *ngSwitchDefault>This loan has no Foreclosure history</div>
+                        </ng-container>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2" class="td-head">
+                        <h4> Status</h4>
+                    </td>
+                    <td colspan="2" class="td-head">
+                        <h4> Non-Judicial</h4>
+                    </td>
+                    <td colspan="2" class="td-head">
+                        <h4> Judicial</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-title">
+                        FCL Status:
+                    </td>
+                    <td>
+                        {{fCBKLossMitDisplay.foreclosureStatus}}
+                    </td>
+                    <td class="td-title">
+                        Ref to Atty:
+                    </td>
+                    <td>
+                        <div class="div" *ngIf="fCBKLossMitDisplay.methodOfForeclosure ==='Judicial'; else elserefToAttnyString">
+                            N/A
+                        </div>
+                        <ng-template #elserefToAttnyString>{{fCBKLossMitDisplay.refToAttnyString}}</ng-template>
+                    </td>
+                    <td class="td-title">
+                        Ref to Atty:
+                    </td>
+                    <td>
+                        <div class="div"
+                            *ngIf="fCBKLossMitDisplay.methodOfForeclosure==='Non-Judicial'; else elseBlockrefToAttnyString">
+                            N/A
+                        </div>
+                        <ng-template #elseBlockrefToAttnyString>{{fCBKLossMitDisplay.refToAttnyString}}</ng-template>
+                    </td>
+                </tr>                          
+                <tr>
+                    <td class="td-title">
+                        Property State:
+                    </td>
+                    <td>
+                        {{fCBKLossMitDisplay.state}}
+                    </td>
+                    <td class="td-title">
+                        1st Legal:
+                    </td>
+                    <td>
+                        <ng-container *ngIf="fCBKLossMitDisplay.methodOfForeclosure==='Judicial'; else elseBlockc1stLegalString">
+                            N/A
+                        </ng-container>
+                        <ng-template #elseBlockc1stLegalString>{{fCBKLossMitDisplay.c1stLegalString}}</ng-template>
+                    </td>
+                    <td class="td-title">
+                        1st Legal:
+                    </td>
+                    <td>
+                        <div class="div"
+                            *ngIf="fCBKLossMitDisplay.methodOfForeclosure==='Non-Judicial'; else elseBlockc1stLegal">
+                            N/A
+                        </div>
+                        <ng-template #elseBlockc1stLegal>{{fCBKLossMitDisplay.c1stLegalString}}</ng-template>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-title">
+                        Method of FCL:
+                    </td>
+                    <td>
+                        {{fCBKLossMitDisplay.methodOfForeclosure}}
+                    </td>
+                    <td class="td-title">
+                        Estimated FCL Date:
+                    </td>
+                    <td>
+                        <div class="div" 
+                           *ngIf="fCBKLossMitDisplay.methodOfForeclosure==='Judicial'; else elseBlockestimatedFCLDateString">
+                            N/A
+                        </div>
+                        <ng-template #elseBlockestimatedFCLDateString>{{fCBKLossMitDisplay.estimatedFCLDateString}}</ng-template>
+                    </td>
+                    <td class="td-title">
+                        Service Completed:
+                    </td>
+                    <td>
+                        <div class="div" 
+                           *ngIf="fCBKLossMitDisplay.serviceCompletedString==='Judicial' else elseBlockserviceCompletedString">
+                            N/A
+                        </div>
+                        <ng-template #elseBlockserviceCompletedString>{{fCBKLossMitDisplay.serviceCompletedString}}</ng-template>
+                    </td> 
+                </tr>
+                <tr>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="td-title">
+                        Actual FCL Date:
+                    </td>
+                    <td>
+                        <div class="div" 
+                            *ngIf="fCBKLossMitDisplay.methodOfForeclosure==='Judicial'; else elseBlockactualFCLDateString">
+                            N/A
+                        </div>
+                        <ng-template #elseBlockactualFCLDateString>{{fCBKLossMitDisplay.actualFCLDateString}}</ng-template>
+                    </td>
+                    <td class="td-title">
+                        Judgement Entered:
+                    </td>
+                    <td>
+                        <div class="div"
+                            *ngIf="fCBKLossMitDisplay.methodOfForeclosure==='Non-Judicial'; else elseBlockjudgementEnteredString">
+                            N/A
+                        </div>
+                        <ng-template #elseBlockjudgementEnteredString>{{fCBKLossMitDisplay.judgementEnteredString}}</ng-template>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="td-title">
+                        Estimated FCL Date:
+                    </td>
+                    <td>
+                        <div class="div"
+                            *ngIf="fCBKLossMitDisplay.methodOfForeclosure==='Non-Judicial'; else elseBlockestimatedFCLDateString">
+                            N/A
+                        </div>
+                        <ng-template #elseBlockestimatedFCLDateString>{{fCBKLossMitDisplay.estimatedFCLDateString}}</ng-template>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="td-title">
+                        Actual FCL Date:
+                    </td>
+                    <td>
+                        <div class="div"
+                            *ngIf="fCBKLossMitDisplay.methodOfForeclosure==='Non-Judicial'; else elseBlockactualFCLDateString">
+                            N/A
+                        </div>
+                        <ng-template #elseBlockactualFCLDateString>{{fCBKLossMitDisplay.actualFCLDateString}}</ng-template>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-container two">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="6">
+                        <div class="div" *ngIf="fCBKLossMitDisplay.bkStatus==='N/A' || fCBKLossMitDisplay.bkStatus ==='UNKWN'; else elseBlockbkStatus">
+                        This loan has no Bankruptcy history
+                        </div>
+                    <ng-template #elseBlockbkStatus>Bankruptcy Information </ng-template>
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="td-title">BK Status:</td>
+                <td>{{fCBKLossMitDisplay.bkStatus}}</td>
+                <td class="td-title">Last Payment Due Date:</td>
+                <td>{{fCBKLossMitDisplay.lastPaymentDueDateString}}</td>
+                <td class="td-title">BK Plan Conf Actual Date:</td>
+                <td>{{fCBKLossMitDisplay.bankruptcyPlanConfActualDateString}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">BK Case #:</td>
+                <td>{{fCBKLossMitDisplay.bkCaseNumber}}</td>
+                <td class="td-title">Post Petition Due Date:</td>
+                <td>{{fCBKLossMitDisplay.postPetitionDueDateString}}</td>
+                <td class="td-title">Conf Hearing Actual Date:</td>
+                <td>{{fCBKLossMitDisplay.confHearingActualDateString}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">BK Filing Date:</td>
+                <td>{{fCBKLossMitDisplay.bkFilingDateString}}</td>
+                <td class="td-title">POC Referred to Atty Actual Date:</td>
+                <td>{{fCBKLossMitDisplay.pocRefferedtoAttorneyActualDateString}}</td>
+                <td class="td-title">MFR Referred to Atty Actual Date:</td>
+                <td>{{fCBKLossMitDisplay.mfrReferredtoAttorneyActualDateString}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">BK Discharge Date:</td>
+                <td>{{fCBKLossMitDisplay.bkDischargeDateString}}</td>
+                <td class="td-title">POC Filed with Court Actual Date:</td>
+                <td>{{fCBKLossMitDisplay.pocFiledwithCourtActualDateString}}</td>
+                <td class="td-title">Hearing Actual Date:</td>
+                <td>{{fCBKLossMitDisplay.hearingActualDateString}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">BK Type:</td>
+                <td>{{fCBKLossMitDisplay.bankruptcyCategory}}</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="td-title">MFR Granted Actual Date:</td>
+                <td>{{fCBKLossMitDisplay.mfrGrantedActualDateString}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-container three">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="6">
+                        <ng-container [ngSwitch]="fCBKLossMitDisplay.lmStatus">
+                            <div *ngSwitchCase="'A'">This loan is Active in Loss Mitigation</div>
+                            <div *ngSwitchCase="'R'">This loan has been Removed from Loss Mitigation</div>
+                            <div *ngSwitchCase="'C'">This loan has been Closed in Loss Mitigation</div>
+                            <div *ngSwitchDefault>This loan has no Loss Mitigation history</div>
+                        </ng-container>
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="td-title">Start Date:</td>
+                <td>{{fCBKLossMitDisplay.lossMitStartDateString}}</td>
+                <td class="td-title">Current Milestone:</td>
+                <td>{{fCBKLossMitDisplay.lossMitCurrentMilestoneString}}</td>
+                <td class="td-title">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="td-title">Approval Date:</td>
+                <td>{{fCBKLossMitDisplay.lossMitApprovalDateString}}</td>
+                <td class="td-title">Deal Type:</td>
+                <td>{{fCBKLossMitDisplay.lossMitDealTypeString}}</td>
+                <td class="td-title">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="td-title">Denial Date:</td>
+                <td>{{fCBKLossMitDisplay.lossMitDenialDateString}}</td>
+                <td class="td-title">Closing Date:</td>
+                <td>{{fCBKLossMitDisplay.lossMitClosedDateString}}</td>
+                <td class="td-title">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+</div>

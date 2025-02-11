@@ -1,0 +1,21 @@
+<h2 class="heading">Credit Information</h2>
+<div class="tab-container four">
+    <div *ngIf="ErrorMsgDiv" class="nodata-cnt">
+        <h3>
+            <mat-icon>info</mat-icon>&nbsp; No Credit Score Data is available for this Loan Number {{getloanNumber}}
+        </h3>
+    </div>
+
+    <kendo-grid class="borrowercreditGrid" *ngIf="!ErrorMsgDiv" [kendoGridBinding]="CreditInformationData" [sortable]="true">
+        <kendo-grid-column field="customerType" title="Customer Type" [width]="40">
+        </kendo-grid-column>
+        <kendo-grid-column field="customerFullName" title="Name" [width]="10"></kendo-grid-column>
+        <kendo-grid-column field="score" title="Score" [width]="10"></kendo-grid-column>
+        <kendo-grid-column field="scoreDate" title="Score Date" [width]="10">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{dataItem.scoreDate | date: 'MM/dd/yyyy'}}
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="age" title="Age" [width]="40"></kendo-grid-column>
+    </kendo-grid>
+</div>

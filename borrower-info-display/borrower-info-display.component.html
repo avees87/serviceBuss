@@ -1,0 +1,75 @@
+ <!-- {{BorrowerInfoDisplayData  | json }} -->
+ <div class="wrapper BorrowerInfo" *ngFor="let BorrowerInfo of BorrowerInfoDisplayData">
+    <!-- {{BorrowerInfo | json}} -->
+    <div class="tab-container loan-section one">
+        <table class="table tbale-bordered table-inner">
+            <tr>
+                <td><strong>{{BorrowerInfo.customerLastName}}, {{BorrowerInfo.customerFirstName}}</strong>
+                </td>
+                <td> <strong>Borrower SSN : </strong>{{BorrowerInfo.customerSsn}}
+                </td>
+                <td> <strong>Type : </strong>{{BorrowerInfo.customerType}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-container two">
+        <!-- {{BorrowerInfo | json}} -->
+        <table class="table tbale-bordered table-inner">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="3">Phone Numbers</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="text-left brd-rht brd-btm">Type</td>
+                <td class="text-left brd-rht brd-btm">Phone Number</td>
+                <td class="text-left brd-btm">Status</td>
+            </tr>
+            <tr>
+                <td>{{BorrowerInfo.phoneType}} </td>
+                <td>{{BorrowerInfo.phoneNumber}} </td>
+                <td>{{BorrowerInfo.phoneStatus}} </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-container three">
+        <table class="table tbale-bordered table-inner">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="3">Email Addresses</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="text-left brd-rht brd-btm">Type</td>
+                <td class="text-left brd-rht brd-btm">Available Email Addresses</td>
+                <td class="text-left brd-btm">Status</td>
+            </tr>
+            <tr>
+                <td>{{BorrowerInfo.emailType}} </td>
+                <td>{{BorrowerInfo.emailAddress}} </td>
+                <td>{{BorrowerInfo.emailStatus}} </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-container four">
+        <table class="table tbale-bordered table-inner">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="3">Mailing Addresses</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="text-left brd-rht brd-btm">Type</td>
+                <td class="text-left brd-rht brd-btm">Available Email Addresses</td>
+                <td class="text-left brd-btm">Status</td>
+            </tr>
+            <tr>
+                <td>{{BorrowerInfo.addressType}} </td>
+                <td>{{BorrowerInfo.mailingAddressStreet1}} </td>
+                <td>{{BorrowerInfo.addressStatus}} </td>
+            </tr>
+        </table>
+    </div>
+</div> 
+

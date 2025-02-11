@@ -1,0 +1,93 @@
+.edit-user-cnt{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    padding: 20px;
+    gap: 30px;
+    background-color: #efefef;
+    table{
+        width: 100%;
+        border: solid 1px #cccccc;
+        border-collapse: collapse;
+        tr{
+            th{
+                background-color: #ccc;
+            }
+            td, th{
+                padding: 5px;
+                border: solid 1px #cccccc;
+                border-collapse: collapse;
+                text-align: center;
+                cursor: pointer;
+            }
+            td{
+                input{
+                    border: solid 1px #a1a1a1;
+                }
+                &:hover{
+                    background-color: #efefef;
+                }
+            }
+        }
+    }
+    .permission-action{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 320px;
+        }
+        .btn-cnt{
+            display: flex;
+            padding: 20px 0 0;
+            gap: 15px;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 320px;
+            cursor: pointer;
+            button.btn{
+                color: #fff;
+                background-color: #1798d0;
+                padding: 15px 20px;
+                border: none;
+                border-radius: 5px;
+                width: 320px;
+                &.btn-clear{
+                    background-color: #c01c06;
+                }
+            }
+        }
+        .btn-save{
+            color: #fff;
+            width: 320px;
+            background-color: #15a45c;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}
+
+
+select.customDropdown::-ms-expand {
+    display: none;
+}
+
+select.customDropdown {
+    outline : none;
+    overflow : hidden;
+    text-indent : 0.01px;
+    text-overflow : '';
+    background : url("https://img.icons8.com/material/24/000000/sort-down.png") no-repeat right #fff;
+
+    -webkit-appearance: none;
+       -moz-appearance: none;
+        -ms-appearance: none;
+         -o-appearance: none;
+        appearance: none;
+}
+
