@@ -6,11 +6,11 @@ import {
 import { Observable, throwError, of } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { NotificationService } from './services/notification.service';
-import { ErrorService } from './services/error.service';
-import { LoggingService } from './services/logging.service';
+import { NotificationService } from './components/services/notification.service';
+import { ErrorService } from './components/services/error.service';
+import { LoggingService } from './components/services/logging.service';
 import { MatSnackBar, MatSnackBarConfig, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { SnackbarService } from './services/snackbar.service';
+import { SnackbarService } from './components/services/snackbar.service';
 
 @Injectable()
 export class ServerErrorInterceptor implements HttpInterceptor {

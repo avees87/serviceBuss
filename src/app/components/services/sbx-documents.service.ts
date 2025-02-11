@@ -1,15 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { LoanDocDetailsListVm } from '../../../models/loandocdetailslistvm';
 import { catchError, map } from 'rxjs/operators';
-import { PortfolioViewVm } from '../../../models/portfolioiewvm';
 import { AppConfiguration } from "read-appsettings-json";
-import { SbxApiClient } from './SbxApiService';
+import { LoanDocDetailsListVm, PortfolioViewVm, SbxApiClient } from './SbxApiService';
 import { MsalService } from '@azure/msal-angular';
 import { of, throwError } from 'rxjs';
 import { LoanInformationService } from './loan-information.service';
-import { VsiLoanDocDetailsListVm } from '../../../models/vsiloandocdetailslistvm';
-import { LoanDocUrlAuditVm } from '../../../models/loanDocUrlAuditVm';
+import { LoanDocUrlAuditVm } from 'src/app/models/loanDocUrlAuditVm';
+import { VsiLoanDocDetailsListVm } from 'src/app/models/vsiloandocdetailslistvm';
 
 
 export const SbxApiSettings_BaseAddress = new InjectionToken<string>('SbxApiSettings.BaseAddress');

@@ -3,10 +3,10 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { BlobOptions } from 'buffer';
 import { catchError, throwError, of, finalize, pipe } from 'rxjs';
 import { LoanDocUrlAuditVm } from 'src/app/models/loanDocUrlAuditVm';
-import { ComponetCommunicationService } from 'src/app/services/component-communication.service';
-import { LoanInformationService } from 'src/app/services/loan-information.service';
-import { SbxDocumentsService } from 'src/app/services/sbx-documents.service';
-import { UserWorkingCacheService } from 'src/app/services/user-workingcache.service';
+import { ComponetCommunicationService } from 'src/app/components/services/component-communication.service';
+import { LoanInformationService } from 'src/app/components/services/loan-information.service';
+import { SbxDocumentsService } from 'src/app/components/services/sbx-documents.service';
+import { UserWorkingCacheService } from 'src/app/components/services/user-workingcache.service';
 import { environment } from 'src/environments/environment';
 
 

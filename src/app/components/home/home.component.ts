@@ -8,10 +8,10 @@ import { images } from './images';
 import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
 import { EventMessage, EventType, InteractionStatus } from '@azure/msal-browser';
 import { Subscription, filter, catchError, of, finalize, take } from 'rxjs';
-import { ComponetCommunicationService } from 'src/app/services/component-communication.service';
-import { SbxDocumentsService } from 'src/app/services/sbx-documents.service';
+import { ComponetCommunicationService } from 'src/app/components/services/component-communication.service';
+import { SbxDocumentsService } from 'src/app/components/services/sbx-documents.service';
 import { UserWorkingCacheVm } from 'src/app/models/userworkingcachevm';
-import { UserWorkingCacheService } from 'src/app/services/user-workingcache.service';
+import { UserWorkingCacheService } from 'src/app/components/services/user-workingcache.service';
 import { Exception } from '@microsoft/applicationinsights-web';
 import { Router } from '@angular/router';
 

@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, NgZone, AfterViewInit } from '@angular/core';
-import { TransactionsDisplayEntityVm } from 'src/app/models/transactionsdisplayentityvm';
-import { LoanInformationService } from 'src/app/services/loan-information.service';
+import { LoanInformationService } from 'src/app/components/services/loan-information.service';
 import { formatNumber } from '@progress/kendo-intl';
-import { ExcelService } from 'src/app/services/excel.service';
+import { ExcelService } from 'src/app/components/services/excel.service';
 import { GridComponent } from '@progress/kendo-angular-grid';
 import { Subscription, take } from 'rxjs';
 import { GridModule } from "@progress/kendo-angular-grid";
+import { TransactionsDisplayEntityVm } from 'src/app/models/transactionsdisplayentityvm';
 
 
 const TransactionHistroyColNames: { title: string, name: string, Id: number }[] = [

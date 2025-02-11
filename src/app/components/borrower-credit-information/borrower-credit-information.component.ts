@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CreditScoreEntity } from 'src/app/models/creditscoreentity';
-import { AssetResearchService } from 'src/app/services/asset-research.service';
-import { ComponetCommunicationService } from 'src/app/services/component-communication.service';
-import { LoanInformationService } from 'src/app/services/loan-information.service';
-import { UserWorkingCacheService } from 'src/app/services/user-workingcache.service';
+import { AssetResearchService } from 'src/app/components/services/asset-research.service';
+import { ComponetCommunicationService } from 'src/app/components/services/component-communication.service';
+import { LoanInformationService } from 'src/app/components/services/loan-information.service';
+import { UserWorkingCacheService } from 'src/app/components/services/user-workingcache.service';
 
 @Component({
   selector: 'sbx-borrower-credit-information',

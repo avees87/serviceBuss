@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { NotesEntityVm } from 'src/app/models/notesentityvm';
 import { NotesContactCodesEntity, NotesReasonCodesEntity, NotesResponseCodesEntity, SBXUserNotesEntity } from 'src/app/models/usernotesvm';
-import { AssetResearchService } from 'src/app/services/asset-research.service';
-import { ComponetCommunicationService } from 'src/app/services/component-communication.service';
-import { ExcelService } from 'src/app/services/excel.service';
+import { AssetResearchService } from 'src/app/components/services/asset-research.service';
+import { ComponetCommunicationService } from 'src/app/components/services/component-communication.service';
+import { ExcelService } from 'src/app/components/services/excel.service';
 import { DropDownFilterSettings } from "@progress/kendo-angular-dropdowns";
-import { LoanInformationService } from 'src/app/services/loan-information.service';
+import { LoanInformationService } from 'src/app/components/services/loan-information.service';
 import { LoanNoteCommandVm } from 'src/app/models/loannotecommandvm';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserWorkingCacheService } from 'src/app/services/user-workingcache.service';
+import { UserWorkingCacheService } from 'src/app/components/services/user-workingcache.service';
 import { UserInfoVm } from 'src/app/models/userinfovm';
-import { LoggingService } from 'src/app/services/logging.service';
+import { LoggingService } from 'src/app/components/services/logging.service';
 import { catchError } from 'rxjs/operators';
 import { forkJoin, of } from 'rxjs';
 

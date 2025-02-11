@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { Router } from '@angular/router';
 // import { User } from 'oidc-client';
 import { finalize } from 'rxjs';
-import { AssetResearchService } from 'src/app/services/asset-research.service';
-import { ComponetCommunicationService } from 'src/app/services/component-communication.service';
-import { UserWorkingCacheService } from 'src/app/services/user-workingcache.service';
+import { AssetResearchService } from 'src/app/components/services/asset-research.service';
+import { ComponetCommunicationService } from 'src/app/components/services/component-communication.service';
+import { UserWorkingCacheService } from 'src/app/components/services/user-workingcache.service';
 
 
 @Component({

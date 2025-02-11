@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { AdminService } from 'src/app/services/admin.service';
-import { SnackbarService } from 'src/app/services/snackbar.service';
+import { AdminService } from 'src/app/components/services/admin.service';
+import { SnackbarService } from 'src/app/components/services/snackbar.service';
 import { numbersOnlyValidator } from './numbersOnlyValidator';
 import { DatePipe } from '@angular/common';
-import { UserWorkingCacheService } from 'src/app/services/user-workingcache.service';
+import { UserWorkingCacheService } from 'src/app/components/services/user-workingcache.service';
 
 @Component({
   selector: 'sbx-admin',

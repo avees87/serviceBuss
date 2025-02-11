@@ -1,20 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { SearchResult } from '../../../models/searchresult';
 import { catchError, map, of } from 'rxjs';
-import { LoanSummaryEntity } from '../../../models/loansummaryentity';
 import { AppConfiguration } from "read-appsettings-json";
 import { SbxApiClient } from './SbxApiService';
-import { LoanVm } from '../../../models/loanvm';
-import { BorrowerInfoDisplayVm } from '../../../models/borrowerinfodisplayvm';
-import { PaymentInforDisplayVm } from '../../../models/paymentinfodisplayvm';
-import { PropertyInforDisplayVm } from '../../../models/propertyinfodisplayvm';
-import { FCBKLossMitDisplayEntity } from '../../../models/fcbkLossmitdisplayentityvm';
-import { PayOffEstimateDisplayEntityVm } from '../../../models/payoffestimatedisplayentityvm';
-import { TransactionsDisplayEntityVm } from '../../../models/transactionsdisplayentityvm';
-import { StopsAndFlagsEntityVm } from '../../../models/stopsandflagsentityvm';
-import { CreditScoreEntity } from '../../../models/creditscoreentity';
 import { UserWorkingCacheService } from './user-workingcache.service';
+import { BorrowerInfoDisplayVm } from 'src/app/models/borrowerinfodisplayvm';
+import { CreditScoreEntity } from 'src/app/models/creditscoreentity';
+import { FCBKLossMitDisplayEntity } from 'src/app/models/fcbkLossmitdisplayentityvm';
+import { LoanSummaryEntity } from 'src/app/models/loansummaryentity';
+import { LoanVm } from 'src/app/models/loanvm';
+import { PaymentInforDisplayVm } from 'src/app/models/paymentinfodisplayvm';
+import { PayOffEstimateDisplayEntityVm } from 'src/app/models/payoffestimatedisplayentityvm';
+import { PropertyInforDisplayVm } from 'src/app/models/propertyinfodisplayvm';
+import { StopsAndFlagsEntityVm } from 'src/app/models/stopsandflagsentityvm';
+import { TransactionsDisplayEntityVm } from 'src/app/models/transactionsdisplayentityvm';
 
 export const SbxApiSettings_BaseAddress = new InjectionToken<string>('SbxApiSettings.BaseAddress');
 const _headers = new HttpHeaders()

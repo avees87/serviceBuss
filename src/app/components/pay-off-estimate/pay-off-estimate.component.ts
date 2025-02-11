@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdjustmentsHistoryEntity, PayoffEstimateDisplayEntity } from 'src/app/models/payoffestimatedisplayentityvm';
-import { LoanInformationService } from 'src/app/services/loan-information.service';
+import { LoanInformationService } from 'src/app/components/services/loan-information.service';
 
 @Component({
   selector: 'sbx-pay-off-estimate',

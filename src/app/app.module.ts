@@ -67,7 +67,6 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoanSearchComponent } from './components/loan-search/loan-search.component';
 import { AppConfiguration } from 'read-appsettings-json';
-import { SbxApiSettings_BaseAddress, SbxApiClient } from './app/components/services/SbxApiService';
 import { BreadCrumbModule } from '@progress/kendo-angular-navigation';
 import { BorrowerCreditInformationComponent } from './components/borrower-credit-information/borrower-credit-information.component';
 import { ErrorDisplayComponent } from './components/error-display/error-display.component';
@@ -77,6 +76,7 @@ import { EdituserComponent } from './components/admin/edituser/edituser.componen
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AdminComponent } from './components/admin/admin.component';
 import { LoaderComponent } from './container/loader/loader.component';
+import { SbxApiSettings_BaseAddress, SbxApiClient } from './components/services/SbxApiService';
 
 const isIE =
   window.navigator.userAgent.indexOf("MSIE ") > -1 ||

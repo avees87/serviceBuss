@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PaymentInfoDisplayEntity, TransactionHistoryDisplayEntity } from '../../models/paymentinfodisplayvm';
-import { LoanInformationService } from '../../services/loan-information.service';
-import { ExcelService } from '../../services/excel.service';
+import { LoanInformationService } from '../services/loan-information.service';
+import { ExcelService } from '../services/excel.service';
 
 const paymentHistroyColNames: { title: string, name: string }[] = [
   { title: 'Payment ID', name: 'paymentId' },

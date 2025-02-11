@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StopsAndFlagsEntityVm } from 'src/app/models/stopsandflagsentityvm';
-import { ExcelService } from 'src/app/services/excel.service';
-import { LoanInformationService } from 'src/app/services/loan-information.service';
+import { ExcelService } from 'src/app/components/services/excel.service';
+import { LoanInformationService } from 'src/app/components/services/loan-information.service';
 
 const StopsFlagsColNames: { title: string, name: string, Id: number }[] = [
   { title: 'Stops & Flags', name: 'stopsAndFlags', Id: 1 },

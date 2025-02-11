@@ -2,9 +2,9 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { routes } from 'src/app/menu';
 import { HeaderComponent } from '../header/header.component';
-import { SideNavService } from 'src/app/services/side-nav.service';
-import { UserWorkingCacheService } from 'src/app/services/user-workingcache.service';
-import { AdminService } from 'src/app/services/admin.service';
+import { SideNavService } from 'src/app/components/services/side-nav.service';
+import { UserWorkingCacheService } from 'src/app/components/services/user-workingcache.service';
+import { AdminService } from 'src/app/components/services/admin.service';
 
 
 @Component({

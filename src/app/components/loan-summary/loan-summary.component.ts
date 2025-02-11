@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoanInformationService } from '../../services/loan-information.service';
-import { ComponetCommunicationService } from '../../services/component-communication.service';
+import { LoanInformationService } from '../services/loan-information.service';
+import { ComponetCommunicationService } from '../services/component-communication.service';
 import { LoanSummaryEntity } from '../../models/loansummaryentity';
 
 @Component({

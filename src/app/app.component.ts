@@ -6,14 +6,13 @@ import { DatePipe } from '@angular/common';
 import { MSAL_GUARD_CONFIG, MsalBroadcastService, MsalGuardConfiguration, MsalService } from '@azure/msal-angular';
 import { AuthenticationResult, InteractionStatus, RedirectRequest } from '@azure/msal-browser';
 import { Router } from '@angular/router';
-import { ComponetCommunicationService } from './app/components/services/component-communication.service';
 import { Subject, catchError, filter, takeUntil } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FormGroup, FormControl } from '@angular/forms';
-import { SideNavService } from './app/components/services/side-nav.service';
-import { UserWorkingCacheService } from './app/components/services/user-workingcache.service';
-import { LoggingService } from './app/components/services/logging.service';
 import { UserInfoVm } from './models/userinfovm';
+import { LoggingService } from './components/services/logging.service';
+import { SideNavService } from './components/services/side-nav.service';
+import { UserWorkingCacheService } from './components/services/user-workingcache.service';
 
 
 export interface SearchObj {

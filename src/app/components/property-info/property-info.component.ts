@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs';
 import { PropertyInfoDisplayEntity, PropertyInforDisplayVm, PropertyValuationEntity } from 'src/app/models/propertyinfodisplayvm';
-import { ExcelService } from 'src/app/services/excel.service';
-import { LoanInformationService } from 'src/app/services/loan-information.service';
+import { ExcelService } from 'src/app/components/services/excel.service';
+import { LoanInformationService } from 'src/app/components/services/loan-information.service';
 
 
 const propertyHistroyColNames: { title: string, name: string, Id: number }[] = [

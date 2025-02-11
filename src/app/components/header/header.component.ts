@@ -3,11 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MSAL_GUARD_CONFIG, MsalGuardConfiguration, MsalService } from '@azure/msal-angular';
 import { RedirectRequest } from '@azure/msal-browser';
-import { ComponetCommunicationService } from 'src/app/services/component-communication.service';
-import { SideNavService } from 'src/app/services/side-nav.service';
-import { UserWorkingCacheService } from 'src/app/services/user-workingcache.service';
+import { ComponetCommunicationService } from 'src/app/components/services/component-communication.service';
+import { SideNavService } from 'src/app/components/services/side-nav.service';
+import { UserWorkingCacheService } from 'src/app/components/services/user-workingcache.service';
 import { environment } from 'src/environments/environment';
-import { AdminService } from 'src/app/services/admin.service';
+import { AdminService } from 'src/app/components/services/admin.service';
 
 @Component({
   selector: 'sbx-header',
