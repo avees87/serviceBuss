@@ -1,0 +1,173 @@
+@import '../../../assets/styles/mixin';
+@import '../../../assets/styles/variables';
+
+
+mat-toolbar {
+  display: grid;
+  grid-template-columns: 50px 100px 2.5fr .5fr 50px 0.6fr 40px;
+  &.mat-toolbar.mat-primary{
+    // background-color:#1a7da8;
+    background-color:#605da0;
+  }
+  .sbx-spacer {
+    flex: 1 1 auto;
+  }
+  .info-cnt{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    .mat-mdc-button-persistent-ripple{
+      border-radius: 0;
+    }
+    button.mat-mdc-icon-button{
+      width: 100%;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      border-radius: 0;
+      span{
+        border-radius: 0;
+        display: block;
+        &::before{
+          display: block;
+        }
+      }
+      &:hover, &:focus, &:focus-visible, &:focus-within,
+      .mat-mdc-button-persistent-ripple{
+        border-radius: 0;
+      }
+      ul{
+        margin: 0;
+        padding: 0;
+        li{
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          strong{
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+    
+    ul{list-style: none;}
+    .loan-details{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+      .mat-mdc-icon-button .mat-mdc-button-persistent-ripple{
+        display: inline;
+      }
+      mat-icon{
+        display: inline;
+        width: 80px;
+        height: 80px;
+      }
+      ul{
+        display: inline;
+        margin: 0;
+        list-style: none;
+        padding: 0;
+        li{
+          list-style: none;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .sbxText{
+    color: #fff;
+    text-decoration: none;
+  }
+  .logo-cnt{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    img{
+      filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5));
+    }
+  }
+  .user-details {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+
+    .mat-mdc-icon-button {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      mat-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        width: inherit;
+        height: inherit;
+      }
+    }
+
+    .details {
+      display: flex;
+      align-items: flex-start;
+      gap: 1px;
+      flex-direction: column;
+      font-size: 10px;
+      line-height: 12px;
+
+      .email {
+        font-size: 13px;
+      }
+
+      .about {
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 13px;
+      }
+    }
+    kendo-window{
+      fieldset{
+        border: none;
+      }
+    }
+  }
+}
+
+::ng-deep .mat-mdc-menu-content{
+  ul{
+    list-style: none;
+    padding-left: 15px;
+    font-size: 14px;
+    margin: 0;
+  }
+}
+::ng-deep .mat-mdc-icon-button .mat-mdc-button-persistent-ripple{
+  border-radius: 0 !important;
+}
+::ng-deep .dark-theme mat-toolbar.mat-toolbar.mat-primary{
+  
+  kendo-window{
+    a{
+      color: lighten($color: #fff, $amount: 30%);
+    }
+    button.aboutus-btn{
+      background-color: var(--mat-stepper-header-done-state-icon-background-color);
+      border-color: var(--mdc-filled-text-field-focus-label-text-color);
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      color: #fff;
+    }
+  }
+}
+
+@include popups()

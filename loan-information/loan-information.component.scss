@@ -1,0 +1,14 @@
+@import '../../../assets/styles/variables';
+
+::ng-deep .dark-theme{
+    .mat-mdc-card.tab-cnt{
+        background-color: $kdDark;
+    }
+    
+    .mdc-tab.mat-mdc-tab.mat-mdc-focus-indicator.mdc-tab--active.mdc-tab-indicator--active {
+        background: #e91e63;
+        .mdc-tab__text-label{
+            color: $white;
+        }
+    }
+}

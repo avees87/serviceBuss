@@ -1,0 +1,10 @@
+<h2 class="heading">Asset Research - Search Results for "{{searchText}}"</h2>
+<kendo-grid [height]="700" #gridAssetSearch [pageSize]="10"  [pageable]="true" [kendoGridBinding]="gridData" [loading]="loading" 
+    [sortable]="true" [filterable]="true" [resizable]="true" [selectable]="true" (selectionChange)="gridUserSelectionChange($event)" class="grid-ui" >
+    <kendo-grid-column field="loanNumber" title="Loan Number"> </kendo-grid-column>  
+    <kendo-grid-column field="investorLoanNumber" title="Investor Loan Number"> </kendo-grid-column> 
+    <kendo-grid-column field="investorNumber" title="Investor Number"> </kendo-grid-column>
+    <kendo-grid-column field="investorName" title="Investor Name"> </kendo-grid-column> 
+    <kendo-grid-column field="borrowerName" title="Borrower Name"> </kendo-grid-column>
+    <kendo-grid-column field="propertyAddress" title="Property Address"> </kendo-grid-column>      
+</kendo-grid>

@@ -1,0 +1,149 @@
+<div class="wrapper loan-display">
+    <div class="tab-container one">
+        <table class="table tbale-bordered table-inner">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="6">Payment Status</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="text-left td-title"><strong>Last Transaction Date:</strong></td>
+                <td>{{paymentInfoDisplay.lastTransactionDateString}}</td>
+                <td class="text-left td-title"><strong>Forclosure Status:</strong></td>
+                <td>{{paymentInfoDisplay.forclosureStatus}}</td>
+                <td class="text-left td-title"><strong>Forclosure By:</strong></td>
+                <td>{{paymentInfoDisplay.foreclosureBy}}</td>
+            </tr>
+            <tr>
+                <td class="text-left td-title"><strong>Next Due Date:</strong></td>
+                <td>{{paymentInfoDisplay.nextDueDate | date: 'MM/dd/yyyy'}} </td>
+                <td class="text-left td-title"><strong>Bankruptcy Status:</strong></td>
+                <td>{{paymentInfoDisplay.statusBankruptcy}}</td>
+                <td class="text-left td-title"><strong>3 Month Payment%:</strong></td>
+                <td>{{paymentInfoDisplay.threeMonthPaymentString}}%</td>
+            </tr>
+            <tr>
+                <td class="text-left td-title"><strong>Interest Rate:</strong></td>
+                <td>{{paymentInfoDisplay.interestRateString}}%</td>
+                <td class="text-left td-title"><strong>Delinquency Status:</strong></td>
+                <td>{{paymentInfoDisplay.delinquencyStatus}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-container two">
+        <table class="table tbale-bordered table-inner">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="6">Escrow Monthly Payment Breakdown</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="text-left td-title"><strong>Country Tax</strong></td>
+                <td>{{paymentInfoDisplay.countyTax | currency}}</td>
+                <td class="text-left td-title"><strong>City Tax</strong></td>
+                <td>{{paymentInfoDisplay.cityTax | currency }}</td>
+                <td class="text-left td-title"><strong>Other Tax:</strong></td>
+                <td>{{paymentInfoDisplay.otherTax | currency }}</td>
+            </tr>
+            <tr>
+                <td class="text-left td-title"><strong>Hazard Insurance:</strong></td>
+                <td>{{paymentInfoDisplay.hazardInsurance | currency }}</td>
+                <td class="text-left td-title"><strong>Mortgage Insurance:</strong></td>
+                <td>{{paymentInfoDisplay.mortgageInsurance | currency }}</td>
+                <td class="text-left td-title"><strong>Overage Shortage:</strong></td>
+                <td>{{paymentInfoDisplay.overage_Shortage | currency }}</td>
+            </tr>
+            <tr>
+                <td class="text-left td-title"><strong>Total TI Payment Due:</strong></td>
+                <td>{{paymentInfoDisplay.totalTIPaymentDue | currency }}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="tab-container three">
+        <table class="table tbale-bordered table-inner">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="12">12 Month Rolling Payment</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="text-left">{{ getMonth(-11) | date: 'MM/yyyy' }}</td>
+                <td class="text-left">{{ getMonth(-10) | date: 'MM/yyyy' }}</td>
+                <td class="text-left">{{ getMonth(-09) | date: 'MM/yyyy' }}</td>
+                <td class="text-left">{{ getMonth(-08) | date: 'MM/yyyy'}}</td>
+                <td class="text-left">{{ getMonth(-07) | date: 'MM/yyyy'}}</td>
+                <td class="text-left">{{ getMonth(-06) | date: 'MM/yyyy'}}</td>
+                <td class="text-left">{{ getMonth(-05) | date: 'MM/yyyy'}}</td>
+                <td class="text-left">{{ getMonth(-04) | date: 'MM/yyyy'}}</td>
+                <td class="text-left">{{ getMonth(-03) | date: 'MM/yyyy'}}</td>
+                <td class="text-left">{{ getMonth(-02) | date: 'MM/yyyy'}}</td>
+                <td class="text-left">{{ getMonth(-01) | date: 'MM/yyyy'}}</td>
+                <td class="text-left">{{ getMonth(-00) | date: 'MM/yyyy'}}</td>
+            </tr>
+            <tr>
+                <td>{{paymentInfoD12month.monthMinusEleven | currency}}</td>
+                <td>{{paymentInfoD12month.monthMinusTen | currency}}</td>
+                <td>{{paymentInfoD12month.monthMinusNine | currency}}</td>
+                <td>{{paymentInfoD12month.monthMinusEight | currency}}</td>
+                <td>{{paymentInfoD12month.monthMinuSeven | currency}}</td>
+                <td>{{paymentInfoD12month.monthMinusSix | currency}}</td>
+                <td>{{paymentInfoD12month.monthMinusFive | currency}}</td>
+                <td>{{paymentInfoD12month.monthMinusFour | currency}}</td>
+                <td>{{paymentInfoD12month.monthMinusThree | currency}}</td>
+                <td>{{paymentInfoD12month.monthMinusTwo | currency}}</td>
+                <td>{{paymentInfoD12month.monthMinusOne | currency}}</td>
+                <td>{{paymentInfoD12month.monthCurrent | currency}}</td>
+            </tr>
+            <tfoot>
+                <tr>
+                    <td colspan="12"><strong>Prior Three Month Avg :   {{paymentInfoDisplay.priorThreeMonthAvg| currency}}</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    
+    <div class="tab-container four">
+        <table class="table tbale-bordered table-inner transactionHistCnt">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        <input type="button" title="ExportToExcel" class="button-add" (click)="ExportCsvTransactionHistory()"/>
+                        Transaction History</th>
+                </tr>
+            </thead>
+            <tr>
+                <kendo-grid class="homeGrid" [pageable]="false"
+                    [kendoGridBinding]="paymentInfoDataHistroyData"
+                     [loading]="loading" [sortable]="true" 
+                    [filterable]="true" [groupable]="true" 
+                     [resizable]="true" style="height: 250px;width: 100%;">
+                    <kendo-grid-column field="paymentId" title="Payment Id"  [width]="120" > </kendo-grid-column>
+                    <kendo-grid-column field="transactionDateString" title="Transaction Date"  [width]="120"> </kendo-grid-column>
+                    <kendo-grid-column field="dueDateString" title="Due Date"  [width]="120"> </kendo-grid-column>
+                    <kendo-grid-column field="effectiveDateString" title="Effective Date"  [width]="120"> </kendo-grid-column>
+                    <kendo-grid-column field="transactionCode" title="Trans Code"  [width]="120"> </kendo-grid-column>
+                    <kendo-grid-column field="transactionDescription" title="Transaction Description"  [width]="120">
+                    </kendo-grid-column>                         
+                    <kendo-grid-column field="totalAmount"  title="Total Amount"
+                        [width]="120" format="{0:c}" >
+                    </kendo-grid-column>
+                    <kendo-grid-column field="principleAmount" title="Principal Amount" [width]="120" format="{0:c}"> </kendo-grid-column>
+                    <kendo-grid-column field="interestAmount" title="Interest Amount" [width]="120" format="{0:c}"> </kendo-grid-column>
+                    <kendo-grid-column field="suspenseAmount" title="Suspense Amount" [width]="120" format="{0:c}"> </kendo-grid-column>
+                    <kendo-grid-column field="escrowAmount" title="Escrow Amount" [width]="120" format="{0:c}"> </kendo-grid-column>
+                    <kendo-grid-column field="feeAmount" title="Fee Amount" [width]="120" format="{0:c}"> </kendo-grid-column>
+                    <kendo-grid-column field="suspenseBalance" title="Suspense Balance" [width]="120" format="{0:c}"> </kendo-grid-column>
+                    <kendo-grid-column field="escrowBalance" title="Escrow Balance" [width]="120" format="{0:c}"> </kendo-grid-column>
+                    <kendo-grid-column field="escrowExpandedAdvanceBalance" title="Escrow Expd Adv Balance" [width]="120" format="{0:c}">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="recoverableCorpAdvanceBalance"
+                        title="Recoverable Corp Advance Balance" [width]="120" format="{0:c}"> </kendo-grid-column>
+                    <kendo-grid-column field="firstPrincipalBalance" title="First Principal Balance" [width]="120" format="{0:c}">
+                    </kendo-grid-column>
+                </kendo-grid>
+            </tr>
+        </table>
+
+    </div>
+</div>

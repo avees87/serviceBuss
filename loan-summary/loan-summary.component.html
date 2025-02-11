@@ -1,0 +1,176 @@
+<div class="wrapper">
+    <div class="tab-container loan-section one">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="6">Loan Info</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="td-title"><strong>Loan Number:</strong></td>
+                <td scope="col">{{loanInfoData.loanNumber}}</td>
+                <td scope="col" class="td-title"><strong>UPB:</strong></td>
+                <td scope="col">{{loanInfoData.upbString}}</td>
+                <td scope="col" class="td-title"><strong>Payoff Amount:</strong></td>
+                <td scope="col">${{loanInfoData.payoffAmount | number : '1.2-2' }}</td>
+            </tr>
+            <tr>
+                <td class="td-title">
+                    <strong>Interest Rate:</strong>
+                </td>
+                <td>{{loanInfoData.interestRateString}}%</td>
+                <td class="td-title">
+                    <strong>Deferred UPB:</strong>
+                </td>
+                <td>${{loanInfoData.deferredUPB | number : '1.2-2'}}</td>
+                <td class="td-title"><strong>Investor:</strong></td>
+                <td>{{loanInfoData.investor}}</td>
+            </tr>
+            <tr>
+                <td class="td-title"><strong>Next Due Date:</strong></td>
+                <td>{{loanInfoData.nextDueDate| date: 'MM/dd/yyyy'}}</td>
+                <td class="td-title"><strong>Investor Name:</strong></td>
+                <td>{{loanInfoData.investorName}}</td>
+                <td class="td-title"><strong>PITI Payment:</strong></td>
+                <td>${{loanInfoData.pitiPayment| number : '1.2-2'}}</td>
+            </tr>           
+            <tr>
+                <td class="td-title"><strong>Investor Loan Number:</strong></td>
+                <td>{{loanInfoData.investorLoanNumber}}</td>
+                <td class="td-title"><strong>Fidelity Contact Status:</strong></td>
+                <td>{{loanInfoData.contactStatus}}</td>
+                <td class="td-title"><strong>Loan Status:</strong></td>
+                <td>{{loanInfoData.loanStatus}}</td>
+            </tr>
+            <tr>
+                <td class="td-title"><strong>P&I Payment:</strong></td>
+                <td>${{loanInfoData.piPayment | number : '1.2-2'}}</td> 
+                <td class="td-title"><strong>Lien:</strong></td>
+                <td>{{loanInfoData.lien}}</td>
+                <td class="td-title"><strong>T&I Payment:</strong></td>
+                <td>${{loanInfoData.tiPayment}}</td>
+            </tr>
+            <tr>
+                <td class="td-title"><strong>Prior Servicer Loan:</strong></td>
+                <td>{{loanInfoData.priorServicerLoan}}</td>
+                <td class="td-title"><strong>Acquisition Date:</strong></td>
+                <td>{{loanInfoData.aquisitionDtValueString}}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="tab-container two">
+        <table class="table tbale-bordered table-inner">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="2">Borrower Details (Monthly)</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="text-left td-title">Borrower Name:</td>
+                <td>{{loanInfoData.borrowerName}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Borrower SSN:</td>
+                <td>{{loanInfoData.borrowerSSN}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Income (Gross):</td>
+                <td>${{loanInfoData.incomeGross | number : '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Assets:</td>
+                <td>${{loanInfoData.assets | number : '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Debt Payment:</td>
+                <td>${{loanInfoData.debtPayment | number : '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">DTI:</td>
+                <td>{{loanInfoData.dtiString}}%</td>
+            </tr>
+            <tr>
+                <td class="td-title">Current HTI:</td>
+                <td>{{loanInfoData.currentHTIString}}%</td>
+            </tr>
+            <tr>
+                <td class="td-title">FICO:</td>
+                <td>{{loanInfoData.ficoString}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">3month Pmt%:</td>
+                <td>{{loanInfoData.threeMonthPaymentString}}%</td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-container three">
+        <table class="table tbale-bordered table-inner">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="2">Property Info</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="text-left td-title">Property Address:</td>
+                <td>{{loanInfoData.propertyAddress}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Valuation Type:</td>
+                <td>{{loanInfoData.valuationType}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Valuation Date:</td>
+                <td>{{loanInfoData.valuationDateString}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Valuation Value:</td>
+                <td>${{loanInfoData.valuationValue | number : '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Current LTV:</td>
+                <td>{{loanInfoData.currentLTVString}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Mailing Address:</td>
+                <td>{{loanInfoData.mailingAddress}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Product Type:</td>
+                <td>{{loanInfoData.productType}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-container four">
+        <table class="table tbale-bordered table-inner">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="2">Data Refresh As Of</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="text-left td-title">Fidelity Data Date:</td>
+                <td>{{loanInfoData.fidelityDataDateString}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Fidelity Loaded:</td>
+                <td>{{loanInfoData.fidelityLoaded | date: 'MM/dd/yyyy'}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-container five">
+        <table class="table tbale-bordered table-inner">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="2">Other Details</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="td-title">Priority / Life Of Loan Note:</td>
+                <td>{{loanInfoData.priorityLifeOfLoanNote}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

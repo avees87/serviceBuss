@@ -1,0 +1,57 @@
+@import '../../../../node_modules/@angular/material/theming';
+@include mat-core();
+
+@import '../../../assets/styles/mixin';
+@import '../../../assets/styles/variables';
+
+@include wrapper();
+
+kendo-dropdownlist{
+    color: #000;
+    background-color: #fff;
+}
+.btn-action-cnt{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    gap: 10px;
+}
+button.aboutus.k-button {
+    background-color: var(--mat-stepper-header-done-state-icon-background-color);
+    border-color: var(--mdc-filled-text-field-focus-label-text-color);
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    color: #fff;
+}
+button.btn-submit{
+    background-color: var(--mat-stepper-header-done-state-icon-background-color);
+    border-color: var(--mdc-filled-text-field-focus-label-text-color);
+}
+/* button.btn-cancel{
+    background-color: #ba0404;
+    border-color: #ba0404;
+} */
+.notes-heading{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0;
+    padding: 0 20px;
+    gap: 50px;
+}
+
+.notes-heading h5{margin-bottom: 0;}
+
+@include popups();
+
+.custom-styling {
+    display: flex;
+    justify-content: flex-end;
+    padding: 4px;
+    border-top-width: 0px;
+    border-top-style: solid;
+    border-color: inherit;
+  }
+  .showError{color: red;}

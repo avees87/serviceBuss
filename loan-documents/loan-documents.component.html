@@ -1,0 +1,89 @@
+<h2 class="heading">Documents</h2>
+<mat-accordion>
+    <mat-expansion-panel hideToggle [expanded]="true" (afterExpand)="visDocumentOpen()">
+        <mat-expansion-panel-header>
+            VSI Documents
+            <!-- <button (click)="visDocumentOpen()">VSI Documents</button> -->
+        </mat-expansion-panel-header>
+        <p class="sub-heading">Total Document Count : {{totalCount}} </p>
+        <kendo-grid [kendoGridBinding]="gridData" [loading]="loading" [sortable]="true" [filterable]="true"
+            [resizable]="true">
+            <!-- <kendo-grid-column field="documentId" title="Document Id"> </kendo-grid-column> -->
+            <kendo-grid-column field="name" title="Document Type">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    <!-- <button class="btn btn-link" (click)="getDocumentUrl(dataItem.id, dataItem.typeName)">
+                        {{dataItem.name}}
+                    </button> -->
+                    <button class="btn btn-link" (click)="getDocumentUrl(dataItem)">
+                      {{dataItem.name}}
+                  </button>
+              </ng-template>
+            </kendo-grid-column>
+            <!-- <kendo-grid-column field="displayName" title="Document Type"> </kendo-grid-column> -->
+            <!-- <kendo-grid-column field="modifiedDate" title="Index Date" > </kendo-grid-column>     -->
+            <kendo-grid-column field="dateCreated" title="Index Date">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    {{dataItem.dateCreated | date: 'MM/dd/yyyy'}}
+                </ng-template>
+            </kendo-grid-column>
+            <!-- href='/AssetResearch/ListAllCopies?docTypeEncoded={{dataItem.displayName}}' target="_blank" -->
+            <!-- <a *ngIf="dataItem.documentCount > 1 else documentCountLessthan1"
+                      href='/AssetResearch/ListAllCopies?docTypeEncoded={{dataItem.displayName}}' >List All Copies</a>              -->
+            <kendo-grid-column field="documentCount" title="Copies Linked" *ngIf="IsDisplayed">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    <!-- <button class="btn btn-link" *ngIf="dataItem.documentCount > 1 else documentCountLessthan1"
+                   onclick='getDocumentByType(dataItem.displayName)'>List All Copies </button> -->
+                    <button class="btn btn-link" *ngIf="dataItem.documentCount > 1 else documentCountLessthan1"
+                        kendoButton (click)="getDocumentByType(dataItem.name)">
+                        List All Copies
+                    </button>
+                </ng-template>
+                <ng-template #documentCountLessthan1>
+
+                </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-command-column title="Action" [hidden]="true">
+                <ng-template kendoGridCellTemplate>
+                    <a style="color: blue"
+                        href="/AssetResearch/LoanDocUrl/DT0E751537-144A-07EE-F87A-8EE16882EA92?folder=FXBD75574C-A17A-9FA4-C16A-D83A152BA053source=Capsilon"
+                        target="_blank">Open Document</a>
+                    <!-- <a  href='{{azureStorageBaseUrl}}/invoices/{{dataItem.number}}.pdf' target="_blank">{{dataItem.number}}</a> -->
+                </ng-template>
+            </kendo-grid-command-column>
+        </kendo-grid>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = false" (closed)="panelOpenState = false" *ngIf="showAiqDocs" (afterExpand)="aiqDocumentOpen()">
+        <mat-expansion-panel-header>AIQ Documents
+            <!-- <button (click)="aiqDocumentOpen()"></button> -->
+        </mat-expansion-panel-header>
+        <h2 class="heading">Documents</h2>
+        <p class="sub-heading">Total Document Count : {{aiqtotalCount}} </p>
+        <kendo-grid [kendoGridBinding]="aiqgridData" [loading]="loading" [sortable]="true" [filterable]="true">
+            <kendo-grid-column field="displayName" title="Document Type">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <button class="btn btn-link"
+                            (click)="aiqgetDocumentUrl(dataItem.documentId,dataItem.containerId,dataItem.sourceRepository)">
+                            {{dataItem.displayName}}
+                        </button>
+                </ng-template>
+            </kendo-grid-column>
+
+            <kendo-grid-column field="modifiedDate" title="Index Date">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    {{dataItem.modifiedDate | date: 'MM/dd/yyyy'}}
+                </ng-template>
+            </kendo-grid-column>
+
+            <kendo-grid-column field="documentCount" title="Copies Linked" *ngIf="AiqIsDisplayed">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    <button class="btn btn-link" *ngIf="dataItem.documentCount > 1 else documentCountLessthan1" kendoButton
+                        (click)="aiqgetDocumentByType(dataItem.displayName)">
+                        List All Copies
+                    </button>
+                </ng-template>
+                <ng-template #documentCountLessthan1>
+                </ng-template>
+            </kendo-grid-column>
+        </kendo-grid>
+    </mat-expansion-panel>
+</mat-accordion>

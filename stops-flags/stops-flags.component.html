@@ -1,0 +1,30 @@
+<div class="wrapper">
+    <div class="tab-container one">
+        <table class="table tbale-bordered table-inner transactionHistCnt">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        <input type="button" title="ExportToExcel" class="button-add" (click)="ExportCsvstopsAndFlags()" />
+                        Stops & Flags Information
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <!-- -->
+                <kendo-grid class="TransactionGrid" [kendoGridBinding]="stopsAndFlagsEntityVm"  [loading]="loading" [pageable]="false"
+                    [sortable]="true" 
+                    [filterable]="true" [groupable]="false" [resizable]="true">                
+                    <kendo-grid-column field="stopsAndFlags" title="Stops & Flags">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="value" title="Value"> </kendo-grid-column>
+                    <kendo-grid-column field="description" title="Description"> </kendo-grid-column>
+                    <kendo-grid-column field="expiresOnString" title="Expires On">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="lastUpdatedBy" title="Last Updated By"> </kendo-grid-column>
+                    <kendo-grid-column field="lastUpdatedDateString" title="Last Updated Date">
+                    </kendo-grid-column>               
+                </kendo-grid>
+            </tr>
+        </table>
+    </div>
+</div>

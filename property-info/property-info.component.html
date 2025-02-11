@@ -1,0 +1,114 @@
+ 
+<div class="wrapper propertyInfo">
+    <div class="tab-container one">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="4"> Property Information</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="td-title">Lien:</td>
+                    <td>{{propertyInfoDisplay.lien}}</td>
+                    <td class="td-title">Original Occupancy:</td>
+                    <td>{{propertyInfoDisplay.occupancyType}}</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Document Type:</td>
+                    <td>{{propertyInfoDisplay.documentType}}</td>
+                    <td class="td-title">Current Occupancy:</td>
+                    <td>{{propertyInfoDisplay.currentOccupancyType}}</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Property Type:</td>
+                    <td>{{propertyInfoDisplay.propertyType}}</td>
+                    <td class="td-title">Loan Purpose:</td>
+                    <td>{{propertyInfoDisplay.loanPurpose}}</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Property Address:</td>
+                    <td>{{propertyInfoDisplay.propertyAddress}}</td>
+                    <td class="td-title">P&amp;I Payment:</td>
+                    <td>{{propertyInfoDisplay.piPayment | currency}}</td>
+                </tr>
+                <tr>
+                    <td class="td-title">City:</td>
+                    <td>{{propertyInfoDisplay.city}}</td>
+                    <td class="td-title">T&amp;I Payment:</td>
+                    <td>{{propertyInfoDisplay.tiPayment | currency }}</td>
+                </tr>
+                <tr>
+                    <td class="td-title">State:</td>
+                    <td>{{propertyInfoDisplay.state}}</td>
+                    <td class="td-title">Property Condition:</td>
+                    <td>{{propertyInfoDisplay.propertyCondition}}</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Zip:</td>
+                    <td>{{propertyInfoDisplay.zip}}</td>
+                    <td class="td-title">Units:</td>
+                    <td>{{propertyInfoDisplay.units}}</td>
+                </tr>
+                <tr>
+                    <td class="td-title"></td>
+                    <td></td>
+                    <td class="td-title"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-container loan-section two">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="2">Updated Lien And LTV Information</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="td-title">Current Property Value:</td>
+                <td>{{propertyInfoDisplay.currentPropertyValue | currency }}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Current Value Date:</td>
+                <td>{{propertyInfoDisplay.currentPropertyValueDateString}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Current Value Type:</td>
+                <td>{{propertyInfoDisplay.currentPropertyValueType}}</td>
+            </tr>
+            <tr>
+                <td class="td-title">Current LTV:</td>
+                <td>{{propertyInfoDisplay.currentLTVString}}%</td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-container three">
+        <table class="table tbale-bordered table-inner transactionHistCnt">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="6">
+                        <input type="button" title="ExportToExcel" class="button-add" (click)="ExportCsvPropertyValuationHistory()"/>
+                        Property Valuation History</th>
+                </tr>
+            </thead>
+            <tr>
+                <kendo-grid class="homeGrid" [pageable]="false"
+                    [kendoGridBinding]="propertyValuationData" [loading]="loading" 
+                    [sortable]="true" [resizable]="true" style="height: 250px;width: 100%;"
+                    [filterable]="true" [groupable]="true" id="grid">
+                    <kendo-grid-column field="orderNumber" title="Order Number"  [width]="120" > </kendo-grid-column>
+                    <kendo-grid-column field="datePVString" title="Date"  [width]="120"> </kendo-grid-column>
+                    <kendo-grid-column field="type" title="Type"  [width]="120"> </kendo-grid-column>
+                    <kendo-grid-column field="asIs" title="AsIs" format="{0:c}"  [width]="120"> </kendo-grid-column>
+                    <kendo-grid-column field="previousAsIsString" title="Previous As Is Value"  [width]="120"> </kendo-grid-column>
+                    <kendo-grid-column field="asIsDollarChangeString" title="$ Change"  [width]="120"> </kendo-grid-column>
+                    <kendo-grid-column field="asIsPercentChangeString" title="% Change"  [width]="120"> </kendo-grid-column>
+                    
+                </kendo-grid>
+            </tr>
+        </table>
+    
+    </div>
+</div>

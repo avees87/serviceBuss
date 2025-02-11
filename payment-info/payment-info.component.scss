@@ -1,0 +1,31 @@
+@import '../../../assets/styles/mixin';
+
+@include wrapper();
+
+.wrapper{
+  grid-auto-rows: inherit;
+  .one{
+    grid-column: 1/6;
+    grid-row: 1;
+  }
+  .two{
+    grid-column: 1/6;
+    grid-row: 2;
+  }
+  .three{
+    grid-column: 1/6;
+    grid-row: 3;
+  }
+  .four{
+    grid-column: 1/6;
+    grid-row: 4;
+    overflow: auto;
+  }
+}
+.mat-mdc-tab-body-content{
+  overflow: inherit;
+}
+
+::ng-deep .dark-theme .k-grouping-row .k-table-td, .dark-theme .k-grouping-row td{
+  background-color: #4a4a4a;
+}

@@ -1,0 +1,106 @@
+
+<h2 class="heading">Notes</h2>
+<button class="aboutus" kendoButton (click)="open()" *ngIf="enableNewNote">New Note</button>
+    <div class="example-wrapper">
+        <kendo-window title="New Loan Note" *ngIf="opened" (close)="close()" [minWidth]="250" [width]="450">
+            <form [formGroup]="notesForm">
+                <p *ngIf="showError" class="showError">Please select contact code OR Response Code OR Reason Code OR Notes </p>
+                <kendo-formfield>
+                    <legend class="k-form-legend"></legend>
+                    <kendo-label [for]="contactCode" text="Contact Code:"></kendo-label>
+                    <kendo-dropdownlist
+                        [defaultItem]="{ notesContactCodeAndDesc: 'Select Contact Type...', notesContactCodesID: 0}"
+                        [textField]="'notesContactCodeAndDesc'" [valueField]="'notesContactCodesID'" [filterable]="true"
+                        [data]="notesContactCodesEntity" [kendoDropDownFilter]="filterSettings"
+                        [data]="notesContactCodesEntity" formControlName="contactCode" kendoTextBox #contactCode
+                        ></kendo-dropdownlist>
+
+                    <kendo-formerror>Error: Contact Code is required</kendo-formerror>
+                </kendo-formfield>
+
+                <kendo-formfield>
+                    <label>Reason Code:</label>
+                    <kendo-dropdownlist
+                        [defaultItem]="{ notesReasonCodeAndDesc: 'Select Reason Type...', notesReasonCodesID: 0}"
+                        [kendoDropDownFilter]="filterSettings" [filterable]="true"
+                        [textField]="'notesReasonCodeAndDesc'" [valueField]="'notesReasonCodesID'"
+                        [data]="notesReasonCodesEntity" formControlName="reasonCode" kendoTextBox #reasonCode
+                        ></kendo-dropdownlist>
+                    <kendo-formerror>Error: Reason Code is required</kendo-formerror>
+                </kendo-formfield>
+
+                <kendo-formfield>
+                    <label>Response Code:</label>
+                    <kendo-dropdownlist [data]="notesResponseCodesEntity" [filterable]="true"
+                        [defaultItem]="{ notesResponseCodeAndDesc: 'Select Response Type...', notesResponseCodesID: 0 }"
+                        [kendoDropDownFilter]="filterSettings" [textField]="'notesResponseCodeAndDesc'"
+                        [valueField]="'notesResponseCodesID'" formControlName="responseCode" kendoTextBox #responseCode
+                        ></kendo-dropdownlist>
+
+                    <kendo-formerror>Error: Response Code is required</kendo-formerror>
+                </kendo-formfield>
+
+                <kendo-formfield>
+                    <kendo-label [for]="notes" text="notes"></kendo-label>
+                    <kendo-textarea formControlName="notes" kendoTextBox #notes [maxlength]="maxlength" (valueChange)="onValueChange($event)">
+                        <kendo-textarea-suffix class="custom-styling">
+                            <span class="counter">Max Length : {{ counter }}</span>
+                          </kendo-textarea-suffix>
+
+                    </kendo-textarea>
+                    
+                    <kendo-formerror>Error: Notes is required</kendo-formerror>
+                </kendo-formfield>
+
+                <kendo-formfield>
+                    <kendo-label [for]="FidelityUserId" text="Fidelity User ID"></kendo-label>
+                    <input formControlName="FidelityUserId" kendoTextBox [maxlength]="3" #FidelityUserId required />
+                    <kendo-formerror>Error: Fidelity User ID is required</kendo-formerror>
+
+                </kendo-formfield>
+
+                <div class="btn-action-cnt">
+                    <button kendoButton (click)="submitForm()" class="btn-submit">Submit</button>
+                    <button kendoButton type="button" (click)="resetForm()" class="btn-reset">Reset</button>
+                    <button kendoButton type="button" (click)="close()" class="btn-cancel">Cancel</button>
+                </div>
+            </form>
+        </kendo-window>
+    </div>
+<div class="wrapper">
+    <div class="tab-container one">
+        <table class="table tbale-bordered table-inner 2">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        <h2 class="heading notes-heading">
+                            <span>
+                                <input type="button" title="ExportToExcel" class="button-add"
+                                    (click)="ExportCsvNotes()" />
+                                Notes
+                            </span>
+                            <h5>Next Due Date : {{nextDueDate | date: 'MM/dd/yyyy' }} </h5>
+                            <h5>Principal Balance : {{uPBString }} </h5>
+                        </h2>
+
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <kendo-grid class="TransactionGrid" [kendoGridBinding]="notesEntityVm" [loading]="loading"
+                    [pageSize]="100" [pageable]="true" [sortable]="true" [filterable]="true" 
+                    [groupable]="false" [resizable]="true" style="height: 100%;width: 100%;">
+                    <kendo-grid-column field="comment" title="Comment" [width]="70">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="createdOn" title="Created On" [width]="10">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            {{getLocalDateString(dataItem.createdOn)}}
+                        </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column field="createdBy" title="Created By" [width]="10"></kendo-grid-column>
+                    <kendo-grid-column field="categoryType" title="Category Type" [width]="10"></kendo-grid-column>
+                </kendo-grid>
+            </tr>
+        </table>
+    </div>
+</div>

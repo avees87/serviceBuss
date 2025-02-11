@@ -1,0 +1,115 @@
+<h2 class="heading">Loan Information</h2>
+<mat-tab-group color="accent">
+  <mat-tab label="Loan Summary">
+    <mat-card class="tab-cnt">
+      <mat-card-content>
+        <sbx-loan-summary></sbx-loan-summary>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Loan">
+    <mat-card class="tab-cnt">
+      <mat-card-content>
+        <sbx-loan-display></sbx-loan-display>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Borrower Info">
+    <mat-card class="tab-cnt">
+      <mat-card-content>
+        <sbx-borrower-info-display></sbx-borrower-info-display>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Payment Info">
+    <mat-card class="tab-cnt">
+      <mat-card-content>
+        <sbx-payment-info></sbx-payment-info>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Property Info">
+    <mat-card class="tab-cnt">
+      <mat-card-content>
+        <sbx-property-info></sbx-property-info>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="FC & BK & LossMit">
+    <mat-card class="tab-cnt">
+      <mat-card-content>
+        <sbx-fcbkloss-mit></sbx-fcbkloss-mit>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="PayOff Estimate">
+    <mat-card class="tab-cnt">
+      <mat-card-content>
+        <sbx-pay-off-estimate></sbx-pay-off-estimate>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Transactions">
+    <mat-card class="tab-cnt">
+      <mat-card-content>
+        <sbx-transactions-display></sbx-transactions-display>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Stops & Flags">
+    <mat-card class="tab-cnt">
+      <mat-card-content>
+        <sbx-stops-flags></sbx-stops-flags>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>
+
+<!-- <kendo-tabstrip [closable]="false" (tabClose)="onClose($event)" (tabSelect)="onSelect($event)" class="loan-info-grid">
+  <kendo-tabstrip-tab title="Loan Summary" [selected]="true">
+    <ng-template kendoTabContent>
+      <sbx-loan-summary></sbx-loan-summary>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab title="Loan">
+    <ng-template kendoTabContent>
+      <sbx-loan-display></sbx-loan-display>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab title="Borrower Info">
+    <ng-template kendoTabContent>
+    <sbx-borrower-info-display></sbx-borrower-info-display>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab title="Payment Info">
+    <ng-template kendoTabContent>
+    <sbx-payment-info></sbx-payment-info>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab title="Property Info">
+    <ng-template kendoTabContent>
+    <sbx-property-info></sbx-property-info>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab title="FC & BK & LossMit">
+    <ng-template kendoTabContent>
+    <sbx-fcbkloss-mit></sbx-fcbkloss-mit>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab title="PayOff Estimate">
+    <ng-template kendoTabContent>
+    <sbx-pay-off-estimate></sbx-pay-off-estimate>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab title="Transactions">
+    <ng-template kendoTabContent>
+    <sbx-transactions-display></sbx-transactions-display>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab title="Stops & Flags">
+    <ng-template kendoTabContent>
+      <sbx-stops-flags></sbx-stops-flags>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  '
+</kendo-tabstrip> -->

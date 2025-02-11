@@ -1,0 +1,113 @@
+<div class="wrapper fcNbkLoss">
+    <div class="tab-container one">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="6">Estimated Payoff Quote</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <td class="td-title">UPB:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.upb | currency}}</td>
+                    <td class="td-title">Suspense Balance:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.suspenseBalance | currency}}</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Interest Due:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.interestDue| currency}}</td>
+                    <td class="td-title">Escrow Balance:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.escrowBalance| currency}}</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Escrow Advances:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.escrowAdvances| currency}}</td>
+                    <td class="td-title">Restricted Escrow Balance:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.restrictedEscrowBalance| currency}}</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Corporate Advances:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.corporateAdvances| currency}} </td>
+                    <td class="td-title">Adjustments:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.adjustments| currency}}</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Late Fees:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.lateFees| currency}}</td>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Property Evaluation Fees::</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.propertyEvaluationFees| currency}}</td>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Title Update/ Recording:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.titltUpdateRecording| currency}}</td>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Mod Fee:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.modFee| currency}}</td>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Other Closing Costs:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.otherClosingCost| currency}}</td>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="td-title">NSF Charges:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.nsfCharges| currency}}</td>
+                    <td class="td-title">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="td-title">Total Amount Owed:</td>
+                    <td class="price" >{{payoffEstimateDisplayEntity.totalAmountOwed| currency}} </td>
+                    <td class="td-title">Estimated Payoff Quote:</td>
+                    <td class="price">{{payoffEstimateDisplayEntity.estimatedPayoffQuote| currency}} </td>
+                </tr>
+                <tr>
+                    <td class="td-title"></td>
+                    <td>&nbsp;</td>
+                    <td class="td-title"><strong>Per-Diem Interest Due:</strong></td>
+                    <td class="price">{{payoffEstimateDisplayEntity.perDiemInterestDue| currency}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="tab-container two">
+        
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="6">Estimated Payoff Quote</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <td>
+                        <kendo-grid class="homeGrid" [pageable]="false"
+                        [kendoGridBinding]="adjustmentsHistoryEntity" [loading]="loading" [sortable]="true"
+                        [filterable]="true" [groupable]="false" [resizable]="true" >
+                        <kendo-grid-column field="adjustments" title="Adjustment"></kendo-grid-column>
+                        <kendo-grid-column field="description" title="Description"></kendo-grid-column>
+                        <ng-template kendoGridNoRecordsTemplate>
+                            No records to display.
+                          </ng-template>
+                        </kendo-grid>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

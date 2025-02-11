@@ -1,0 +1,68 @@
+<mat-toolbar color="primary" class="sbx-toolbar">
+	<button mat-icon-button (click)="toggleNavbar()"><mat-icon>menu</mat-icon></button>
+  <a routerLink="{{logolink}}" class="sbxText">
+    <h1 class="logo-cnt">
+      <img src="../assets/img/RP_Logo.svg" alt="rpm logo" width="30">
+      SBX
+    </h1>
+  </a>
+  <span class="sbx-spacer"></span>
+  <div class="info-cnt">
+    <button *ngIf="isVisible" mat-icon-button class="info-btn" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" #loanMenu="matMenuTrigger" (mouseenter)="loanMenu.openMenu()">
+      <mat-icon>article</mat-icon>
+
+      <ul (mouseleave)="loanMenu.closeMenu()">
+        <li>Loan Number: {{selectedGridRow?.loanNumber}}</li>
+        <li>Borrower: {{selectedGridRow?.borrowerName}}</li>
+      </ul>
+      <span>
+        <mat-menu #menu="matMenu">
+          <ul>
+            <li>SSN: {{selectedGridRow?.borrowerSSN}}</li>
+            <li>Property: {{selectedGridRow?.propertyAddress}}</li>
+            <li>Investor: {{selectedGridRow?.investorName}}</li>
+          </ul>
+        </mat-menu>
+      </span>
+    </button>
+  </div>
+  <sbx-theme-switch></sbx-theme-switch>
+
+  <div class="user-details">
+    <button mat-icon-button (click)="open()" class="aboutus-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+        <path id="info" d="M11.625-16.875a11,11,0,0,0-11,11,11,11,0,0,0,11,11,11,11,0,0,0,11-11A11,11,0,0,0,11.625-16.875Zm0,5.133a1.467,1.467,0,0,1,1.467,1.467,1.467,1.467,0,0,1-1.467,1.467,1.467,1.467,0,0,1-1.467-1.467A1.467,1.467,0,0,1,11.625-11.742ZM13.458-.008H9.792a1.1,1.1,0,0,1-1.1-1.1,1.1,1.1,0,0,1,1.1-1.1h.733V-5.142h-.367a1.1,1.1,0,0,1-1.1-1.1,1.1,1.1,0,0,1,1.1-1.1h1.467a1.1,1.1,0,0,1,1.1,1.1v4.033h.733a1.1,1.1,0,0,1,1.1,1.1A1.1,1.1,0,0,1,13.458-.008Z" transform="translate(-0.625 16.875)" fill="#FFFFFF"/>
+      </svg>
+    </button>
+    <!-- <button class="aboutus" kendoButton (click)="open()">New Note</button> -->
+    <kendo-window title="About" *ngIf="opened" (close)="close()" [minWidth]="250" [width]="475">
+      <fieldset>
+        <label class="k-form-field">
+          <img src="/assets/img/rp-new-logo.png" alt="rp-logo" width="40" /> <br/>
+          Version Build: {{appversion}}<br/>
+          All rights reserved.<br/>
+          <br>
+          <div style="font-weight: bold;">
+              Product Support Services
+          </div>
+          <br>
+          To report technical issues, feedback or suggestions,<br>
+          please contact:<br>
+          <!-- Support Number: 1-866-559-8718 or E-mail<br> -->
+          Support Email: <a href="mailto:applicationdevteam@roundpointmortgage.com">applicationdevteam&#64;roundpointmortgage.com</a>
+        </label>
+      </fieldset>
+
+      <div class="k-actions k-actions-end">
+        <button kendoButton type="button" (click)="close()">Cancel</button>
+      </div>
+    </kendo-window>
+    <div class="details">
+      <div class="email">Welcome, {{userEmail}} </div>
+      <div class="time">{{ myDate | date:'fullDate'}}</div>
+    </div>
+  </div>
+  <button mat-icon-button class="sbx-icon" (click)="logout()" aria-label="sbx icon-button with share icon">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

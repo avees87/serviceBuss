@@ -1,0 +1,56 @@
+<div class="wrapper">
+    <div class="tab-container one">
+        <table class="table tbale-bordered table-inner transactionHistCnt">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        <input type="button" title="ExportToExcel" class="button-add"
+                            (click)="ExportCsvTransactions()" />
+                        Transaction Information
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <!-- -->
+                <kendo-grid class="TransactionGrid" [kendoGridBinding]="transactionsDisplayEntityVm"
+                    [loading]="loading" [pageable]="false" [sortable]="true"
+                    [filterable]="true" [groupable]="true" [resizable]="true"
+                      style="height:calc(100vh - 320px);" >
+                    <!-- <kendo-grid-column field="transactionDate" title="Trans Date" [format]="'{0:MM/dd/yyyy}'">
+                      <ng-template kendoGridCellTemplate let-dataItem>
+                        {{dataItem.transactionDate | date: 'MM-dd-yyyy'}}
+                      </ng-template>
+                      <ng-template kendoGridFilterCellTemplate let-filter >
+                        <kendo-grid-date-filter-cell
+                          [filter]="filter">
+                        </kendo-grid-date-filter-cell>
+                      </ng-template>
+                    </kendo-grid-column> -->
+                    <kendo-grid-column field="transactionDate" title="Trans Date" format="MM/dd/yyyy" filter="date"> </kendo-grid-column>
+                    <!-- <kendo-grid-column field="transactionDateString" title="Trans Date">
+                    </kendo-grid-column> -->
+                    <kendo-grid-column field="transactionCode" title="Trans Code"> </kendo-grid-column>
+                    <kendo-grid-column field="transactionGroup" title="Trans Group"> </kendo-grid-column>
+                    <kendo-grid-column field="transactionAmount" title="Trans Amount" format="{0:a}">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="transactionType" title="Trans Type"> </kendo-grid-column>
+                    <kendo-grid-column field="checkNumber" title="Check Number">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="suspenseBalance" title="Suspense Balance">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="escrowBalance" title="Escrow Balance"> </kendo-grid-column>
+                    <kendo-grid-column field="escrowExpandedAdvanceBalance" title="Escrow Expanded Advance Balance"
+                        format="{0:C}"> </kendo-grid-column>
+                    <kendo-grid-column field="recoverableCorpAdvanceBalance" title="Recoverable Corp Advance Balance">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="nonRecCorpAdvanceBalance" title="Non Rec Corp Advance Balance">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="firstPrincipalBalance" title="First Principal Balance">
+                    </kendo-grid-column>
+                </kendo-grid>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
