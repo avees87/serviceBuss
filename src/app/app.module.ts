@@ -67,7 +67,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoanSearchComponent } from './components/loan-search/loan-search.component';
 import { AppConfiguration } from 'read-appsettings-json';
-import { SbxApiSettings_BaseAddress, SbxApiClient } from './services/SbxApiService';
+import { SbxApiSettings_BaseAddress, SbxApiClient } from './app/components/services/SbxApiService';
 import { BreadCrumbModule } from '@progress/kendo-angular-navigation';
 import { BorrowerCreditInformationComponent } from './components/borrower-credit-information/borrower-credit-information.component';
 import { ErrorDisplayComponent } from './components/error-display/error-display.component';

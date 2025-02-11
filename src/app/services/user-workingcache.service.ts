@@ -2,8 +2,8 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
 import { SbxApiClient } from './SbxApiService';
-import { UserWorkingCacheVm } from '../models/userworkingcachevm';
-import { UserInfoVm } from '../models/userinfovm';
+import { UserWorkingCacheVm } from '../../../models/userworkingcachevm';
+import { UserInfoVm } from '../../../models/userinfovm';
 import { LoggingService } from './logging.service';
 import { AccountInfo } from '@azure/msal-browser';
 

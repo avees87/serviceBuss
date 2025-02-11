@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { SearchResult } from '../models/searchresult';
+import { SearchResult } from '../../../models/searchresult';
 import { catchError, map, of } from 'rxjs';
 import { AppConfiguration } from "read-appsettings-json";
 import { SbxApiClient } from './SbxApiService';
-import { NotesEntityVm } from '../models/notesentityvm';
-import { UserNotesVm } from '../models/usernotesvm';
-import { LoanNoteCommandVm } from '../models/loannotecommandvm';
+import { NotesEntityVm } from '../../../models/notesentityvm';
+import { UserNotesVm } from '../../../models/usernotesvm';
+import { LoanNoteCommandVm } from '../../../models/loannotecommandvm';
 
 export const SbxApiSettings_BaseAddress = new InjectionToken<string>('SbxApiSettings.BaseAddress');
 
